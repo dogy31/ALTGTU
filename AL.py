@@ -1,0 +1,97 @@
+#Задание 1.1
+print("Задание 1.1")
+dict_1 = {1: 'a', 2: 'b'}
+dict_2 = {2: 'c', 4: 'd'}
+
+result = dict_1 | dict_2
+print(result)  # {1: 'a', 2: 'c', 4: 'd'}
+
+#Задание 1.2
+print("Задание 1.2")
+dict_1 = {1: 'a', 2: 'b'}
+dict_2 = {2: 'c', 4: 'd'}
+
+result = dict_1.copy()
+result.update(dict_2)
+print(result)
+
+#Задание 2
+print("Задание 2")
+def max_dict(*dicts):
+    result = {}
+    for d in dicts:
+        for key, value in d.items():
+            if key in result:
+                if value > result[key]:
+                    result[key] = value
+            else:
+                result[key] = value
+    return result
+
+def sum_dict(*dicts):
+    result = {}
+    for d in dicts:
+        for key, value in d.items():
+            if key in result:
+                result[key] += value
+            else:
+                result[key] = value
+    return result
+
+# Тесты
+dict_1 = {1: 12, 2: 33, 3: 10, 4: 10, 5: 2, 6: 90}
+dict_2 = {1: 12, 3: 7, 4: 1, 5: 2, 7: 112}
+dict_3 = {2: 3, 3: 3, 4: 60, 6: 8, 7: 25, 8: 71}
+dict_4 = {3: 1, 4: 13, 5: 31, 9: 9, 10: 556}
+
+print(max_dict(dict_1, dict_2))
+print(sum_dict(dict_1, dict_4, dict_3))
+print(max_dict(dict_1, dict_2, dict_3, dict_4))
+print(sum_dict(dict_1, dict_2, dict_3, dict_4))
+
+#Задание 3
+print("Задание 3")
+def set_gen(lst):
+    result = set()
+    counts = {}
+    for num in lst:
+        if num in counts:
+            counts[num] += 1
+            result.add(str(num) * counts[num])
+        else:
+            counts[num] = 1
+            result.add(num)
+    return result
+
+# Тесты
+list_1 = [1, 1, 3, 3, 1]
+list_2 = [5, 5, 5, 5, 5, 5, 5]
+list_3 = [2, 2, 1, 2, 2, 5, 6, 7, 1, 3, 2, 2]
+
+print(set_gen(list_1))
+print(set_gen(list_2))
+print(set_gen(list_3))
+
+
+#Задание 4
+print("Задание 4")
+def superset(set1, set2):
+    if set1 == set2:
+        print("Множества равны")
+    elif set1.issuperset(set2):
+        print(f"Объект {set1} является чистым супермножеством")
+    elif set2.issuperset(set1):
+        print(f"Объект {set2} является чистым супермножеством")
+    else:
+        print("Супермножество не обнаружено")
+
+# Тесты
+set_1 = {1, 8, 3, 5}
+set_2 = {3, 5}
+set_3 = {5, 3, 8, 1}
+set_4 = {90, 100}
+
+superset(set_1, set_2)
+superset(set_1, set_3)
+superset(set_2, set_3)
+superset(set_4, set_2)
